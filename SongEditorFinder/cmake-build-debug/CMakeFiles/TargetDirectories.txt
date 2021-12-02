@@ -1,0 +1,3 @@
+C:/Users/fiana/CLionProjects/SongEditorFinder/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/fiana/CLionProjects/SongEditorFinder/cmake-build-debug/CMakeFiles/SongEditorFinder.dir
+C:/Users/fiana/CLionProjects/SongEditorFinder/cmake-build-debug/CMakeFiles/edit_cache.dir
