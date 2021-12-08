@@ -248,8 +248,8 @@ vector<Song*> EdgeList::traverseOrder()
     return result;
 }
 
-/* AJDLIST CODE*/
-class AdjList
+
+class AdjMatrix
 {
 private:
     vector<vector<int>> edgeMatrix;
@@ -258,8 +258,8 @@ private:
     int V;
     vector<Song*> likeMusic;
 public:
-    AdjList(vector<Song*> list, string targetName);
-    ~AdjList();
+    AdjMatrix(vector<Song*> list, string targetName);
+    ~AdjMatrix();
     vector<Song*> get_songList();
     int get_V();
     int get_sourceIndex();
@@ -270,7 +270,7 @@ public:
     //void printGraph();
     map<int, struct Song *> traverse();
 };
-AdjList::AdjList(vector<Song*> list,string targetName)
+AdjMatrix::AdjMatrix(vector<Song*> list,string targetName)
 {
     int index;
     for (int i = 0; i < list.size(); i++)
@@ -307,26 +307,26 @@ AdjList::AdjList(vector<Song*> list,string targetName)
     }
     //cout << matrix.size() << endl;
 }
-AdjList::~AdjList()
+AdjMatrix::~AdjMatrix()
 {
 }
-vector<Song*> AdjList::get_songList(){
+vector<Song*> AdjMatrix::get_songList(){
     return songList;
 }
-int AdjList::get_V(){
+int AdjMatrix::get_V(){
     return V;
 }
-int AdjList::get_sourceIndex() {
+int AdjMatrix::get_sourceIndex() {
     return sourceIndex;
 }
-void AdjList::insertEdge(int from, int to, int weight) {
+void AdjMatrix::insertEdge(int from, int to, int weight) {
 
 }
-vector<int> AdjList::getAdjacent(int index) {
+vector<int> AdjMatrix::getAdjacent(int index) {
     vector<int> weightList = edgeMatrix[index];
     return weightList;
 }
-map<int, Song*> AdjList::traverse() {
+map<int, Song*> AdjMatrix::traverse() {
     srand(unsigned(time(0)));
     vector<int> visited;
     vector<int> q;
