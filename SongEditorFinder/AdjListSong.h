@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
-#include <map>
+#include <unordered_map>
 
 // random generator function:
 int myrandom(int i) { return std::rand() % i; }
@@ -70,7 +70,7 @@ public:
     int get_sourceIndex();
     void insertEdge(int from, int to, int weight);
     vector<int> getAdjacent(int index);
-    map<int, struct Song *> traverse();
+    unordered_map<int, struct Song *> traverse();
     vector<Song*> traverseOrder();
 };
 
@@ -180,14 +180,14 @@ vector<int> EdgeList::getAdjacent(int index)
     }
     return adjacents;
 }
-map<int, Song*> EdgeList::traverse()
+unordered_map<int, Song*> EdgeList::traverse()
 {
     srand(unsigned(time(0))); //Using the random generator to not alphabetically present choices to user
     vector<int> visited;
     vector<int> q;
     visited.push_back(sourceIndex);
     q.push_back(sourceIndex);
-    map<int, Song*> songMap;
+    unordered_map<int, Song*> songMap;
     cout << "BFS:";
     int cnt = 0;
     while (q.size() != 0)
@@ -268,7 +268,7 @@ public:
     //int getWeight(int from, int to);
     vector<int> getAdjacent(int index);
     //void printGraph();
-    map<int, struct Song *> traverse();
+    unordered_map<int, struct Song *> traverse();
 };
 AdjMatrix::AdjMatrix(vector<Song*> list,string targetName)
 {
@@ -326,11 +326,11 @@ vector<int> AdjMatrix::getAdjacent(int index) {
     vector<int> weightList = edgeMatrix[index];
     return weightList;
 }
-map<int, Song*> AdjMatrix::traverse() {
+unordered_map<int, struct Song *> AdjMatrix::traverse() {
     srand(unsigned(time(0)));
     vector<int> visited;
     vector<int> q;
-    map<int, Song*> songsMap;
+    unordered_map <int, Song*> songsMap;
     visited.push_back(sourceIndex);
     q.push_back(sourceIndex);
     cout << "BFS:";

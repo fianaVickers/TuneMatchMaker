@@ -5,7 +5,7 @@
 #include "TextBox.cpp"
 #include "Button.cpp"
 #include "AdjListSong.h"
-#include <map>
+#include <unordered_map>
 #include "ctime"
 #include <chrono>
 using namespace  std::chrono;
@@ -87,10 +87,10 @@ vector<Song*> getSongList(string targetName){
     return songList;
 }
 
-map<int, Song*>getSongMap(const string& targetName, string whichList, string& time){
+unordered_map<int, Song*>getSongMap(const string& targetName, string whichList, string& time){
 
     vector<Song*> songList = getSongList(targetName);
-    map<int, Song*> map;
+    unordered_map<int, Song*> map;
 
     time = "";
     clock_t help;
@@ -219,7 +219,7 @@ int main() {
     //map stuff boys
 
 
-    map<int, Song*> testMap;
+    unordered_map<int, Song*> testMap;
     auto itr = testMap.begin();
 
     //stop added
@@ -287,8 +287,8 @@ int main() {
 
                     showMainMenu = false;
                     showRateScreen = true;
-                    map<int, Song*> tempMap;
-                    map<int, Song*> tempMap2;
+                    unordered_map<int, Song*> tempMap;
+                    unordered_map<int, Song*> tempMap2;
 
 
                     string time = " ";
@@ -363,21 +363,21 @@ int main() {
 
                     //1. Get the mouse position
                     auto pos = sf::Mouse::getPosition(window);
-                    cout << "mouses x:" << pos.x << " mouses y" << pos.y << endl;
+                   // cout << "mouses x:" << pos.x << " mouses y" << pos.y << endl;
                     if (searchBtn.getGlobalBounds().contains(sf::Vector2f(pos.x, pos.y))) {
-                        cout << "search btn clicked!" << endl;
+                        //cout << "search btn clicked!" << endl;
                         showMainMenu = false;
                         showRateScreen = true;
-                        cout << "cleared test map" << endl;
+                        //cout << "cleared test map" << endl;
                         testMap.clear();
-                        cout << "test map size" << testMap.size() << endl;
+                        //cout << "test map size" << testMap.size() << endl;
 
                     } else if (exitBtn.getGlobalBounds().contains(sf::Vector2f(pos.x, pos.y))) {
-                        cout << "exit btn was clicked returning to main menu..." << endl;
+                       // cout << "exit btn was clicked returning to main menu..." << endl;
                         showMainMenu = true;
                         showRateScreen = false;
                     } else if(hateBtn.getGlobalBounds().contains(sf::Vector2f(pos.x, pos.y))){
-                        cout << "hate btn clicked" << endl;
+                        //cout << "hate btn clicked" << endl;
                         auto tempItr = itr;
                         tempItr++;
                         if(!testMap.empty()){
@@ -410,7 +410,7 @@ int main() {
                     }else if(loveBtn.getGlobalBounds().contains(sf::Vector2f(pos.x, pos.y))){
                        auto tempItr = itr;
                        tempItr++;
-                        cout << "love btn clicked" << endl;
+                        //cout << "love btn clicked" << endl;
 
                         if(!testMap.empty()){
 
